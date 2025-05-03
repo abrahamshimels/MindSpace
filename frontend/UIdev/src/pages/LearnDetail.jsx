@@ -1,8 +1,11 @@
 import React from 'react'
+import LearAndSidebar from '../components/LearnDetal/LearAndSidebar'
 
 function LearnDetail() {
   return (
-    <div>LearnDetail</div>
+    <div>
+      <LearAndSidebar/>
+    </div>
   )
 }
 
