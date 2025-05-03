@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'authentication',
     'rest_framework_simplejwt.token_blacklist',
     'drf_yasg',
+    'forum',
 ]
 
 
@@ -118,6 +119,21 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': 'Enter JWT token as: Bearer <your_token>',
+        },
+    },
+    'USE_SESSION_AUTH': False,
+}
+
+
 
 
 # Internationalization
