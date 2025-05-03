@@ -2,7 +2,7 @@ import React from "react";
 
 function ChatTopic() {
   return (
-    <div className="h-[25%] my-20">
+    <div className="h-[25%] my-10">
       <div>
         <h1 className="text-center text-2xl font-bold">
           Discussion about Stress
