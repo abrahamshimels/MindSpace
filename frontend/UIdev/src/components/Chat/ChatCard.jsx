@@ -6,13 +6,9 @@ import SideBar from './SideBar';
 
 function ChatCard() {
   return (
-    <div className='flex flex-col sm:flex-row w-full bg-[#FBF8F2] h-screen'>
+    <div className='flex flex-row'>
    
-      <div className='flex-1 order-1 sm:order-none overflow-y-auto scrollbar-hide'
-       style={{
-    '::-webkit-scrollbar': { display: 'none' },
-    'scrollbar-width': 'none',
-  }}>
+      <div className='sm:w-[70%]'>
         <div className='space-y-4 p-4 sm:pr-0'>
           <ChatCardRight />
           <ChatCardRight />
@@ -21,7 +17,7 @@ function ChatCard() {
           <MessageForm />
         </div>
       </div>
-      <div className='order-2 sm:order-none sm:sticky hidden sm:block sm:top-0 w-full sm:w-[25%] sm:h-screen bg-[#FBF8F2] border-t sm:border-t-0 sm:border-l border-gray-200'>
+      <div className='sm:w-[30%] sticky top-5 hidden sm:block h-screen'>
         <SideBar />
       </div>
     </div>
