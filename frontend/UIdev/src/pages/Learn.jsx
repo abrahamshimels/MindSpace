@@ -1,14 +1,23 @@
-import React from 'react'
+import React from 'react';
+import Hero from '../components/Learn/Hero';
+import RelatedTopicsSection from '../components/Learn/RelatedTopicSection'; 
+import TopicsSection from '../components/Learn/TopicsSection';
 
 function Learn() {
   return (
-    <div className='mt-15 h-screen text-center'>
-    <h1> learn page</h1>
-    <h2> Hi Translated our Figma design into a React component and render over here. and remove this text</h2>
-   
- 
-  </div>
-  )
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <Hero />
+
+      {/* Main Topics Section */}
+      <TopicsSection/>
+
+      {/* Related Topics Section */}
+      <RelatedTopicsSection />
+
+      
+    </div>
+  );
 }
 
-export default Learn
+export default Learn;
