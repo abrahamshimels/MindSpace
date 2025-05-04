@@ -15,8 +15,10 @@ import LearnDetail from "./pages/LearnDetail"
 import ForumDetail from "./pages/ForumDetail"
 
 
+
 function App() {
   return (
+
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
         <Navigation />
@@ -29,7 +31,7 @@ function App() {
           <Route path="/aboutus" element={<About />}/>
           <Route path="/contact" element={<Contact />}/>
           <Route path="/learn/:id" element={<LearnDetail />}/>
-          <Route path="/form/:id" element={<ForumDetail/>}/>
+          <Route path="/community/:id" element={<ForumDetail/>}/>
         </Routes>
         <Footer />
       </div>
