@@ -2,7 +2,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Navigation from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home"
 import Learn from "./pages/Learn"
@@ -15,6 +14,7 @@ import LearnDetail from "./pages/LearnDetail"
 import ForumDetail from "./pages/ForumDetail"
 import Appointement from "./components/Appointment/Appointement";
 import MoodHistory from "./components/MoodTracker/MoodHistory";
+import Navbar from "./components/Navbar";
 
 
 
@@ -23,7 +23,7 @@ function App() {
 
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
-        <Navigation />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/learn" element={<Learn />}/>

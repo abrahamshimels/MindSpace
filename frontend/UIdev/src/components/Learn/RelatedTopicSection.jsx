@@ -48,6 +48,7 @@ const RelatedTopicsSection = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <TopicCard 
+              id = {topic.id}
                 title={topic.title} 
                 description={topic.description}
                 variant="secondary"

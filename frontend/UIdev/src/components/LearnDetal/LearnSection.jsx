@@ -1,14 +1,17 @@
 import React from "react";
 import Image from "../../assets/image/luiz-rogerio-nunes-gkJYH0FLtt0-unsplash.jpg"
+// import { useParams } from 'react-router-dom';
 
 
 function LearnSection() {
+  // const { detailsId } = useParams();
   return (
     <div>
-      {" "}
       <div className="flex justify-center ">
         <img className="w-150 h-100 object-cover mt-18" src={Image} alt="image" />
       </div>
+     
+
       <p className="p-7">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
         cumque, quia laudantium dolorum dicta veniam, eum deserunt reprehenderit

@@ -1,6 +1,7 @@
 import React from 'react';
 import TopicCard from './TopicCard';
 
+
 const topicsData = [
   {
     id: 1,
@@ -47,7 +48,7 @@ const TopicsSection = () => {
               className="min-h-[360px] opacity-0 animate-fadeInUp"
               style={{ animationDelay: `${index * 0.1}s` }} 
             >
-              <TopicCard title={topic.title} description={topic.description} />
+              <TopicCard id={topic.id} title={topic.title} description={topic.description} />
             </div>
           ))}
         </div>

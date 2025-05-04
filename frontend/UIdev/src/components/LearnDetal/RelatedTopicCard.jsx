@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function RelatedTopicCard({ title, description, variant = 'primary' }) {
+function RelatedTopicCard({ id, title, description, variant = 'primary' }) {
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -25,7 +25,7 @@ function RelatedTopicCard({ title, description, variant = 'primary' }) {
             : description}
         </p>
         <Link 
-        to={``}
+        to={`${id}`}
         onClick={scrollToTop}
         className="flex justify-center"
         >

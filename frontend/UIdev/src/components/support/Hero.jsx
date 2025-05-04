@@ -8,7 +8,7 @@ const Hero = () => {
         style={{
           backgroundImage: "url('https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=1600')",
           backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundPosition: 'top'
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 to-gray-900/30"></div>
