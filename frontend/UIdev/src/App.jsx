@@ -13,6 +13,8 @@ import Contact from "./pages/Contact"
 import About from "./pages/About"
 import LearnDetail from "./pages/LearnDetail"
 import ForumDetail from "./pages/ForumDetail"
+import Appointement from "./components/Appointment/Appointement";
+import MoodHistory from "./components/MoodTracker/MoodHistory";
 
 
 
@@ -32,6 +34,8 @@ function App() {
           <Route path="/contact" element={<Contact />}/>
           <Route path="/learn/:id" element={<LearnDetail />}/>
           <Route path="/community/:id" element={<ForumDetail/>}/>
+          <Route path="/Tool/Appointment/:id" element={<Appointement/>}/>
+          <Route path="/Tool/MoodHistory/:id" element={<MoodHistory/>}/>
         </Routes>
         <Footer />
       </div>
