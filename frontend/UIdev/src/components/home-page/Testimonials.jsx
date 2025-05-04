@@ -34,7 +34,7 @@ const Testimonials = () => {
     );
   };
 
-  // Show 2 testimonials at a time
+
   const visibleTestimonials = [
     testimonialsData[startIndex],
     testimonialsData[(startIndex + 1) % testimonialsData.length]
@@ -61,17 +61,16 @@ const Testimonials = () => {
           ))}
         </div>
 
-        {/* Arrows - Right aligned */}
         <div className="flex justify-end mt-8 space-x-4">
           <button
             onClick={handlePrev}
-            className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 transition"
+            className="p-2 rounded-full cursor-pointer bg-white shadow-md hover:bg-gray-100 transition"
           >
             <img src={leftArrow} alt="Previous" className="w-8 h-8" />
           </button>
           <button
             onClick={handleNext}
-            className="p-2 rounded-full bg-white shadow-md hover:bg-gray-100 transition"
+            className="p-2 rounded-full cursor-pointer bg-white shadow-md hover:bg-gray-100 transition"
           >
             <img src={rightArrow} alt="Next" className="w-8 h-8" />
           </button>

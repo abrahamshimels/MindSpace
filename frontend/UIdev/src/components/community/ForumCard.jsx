@@ -26,7 +26,7 @@ const ForumCard = ({ title, description }) => {
         >
         <button
           className={`
-            bg-black text-white font-semibold py-3 px-6 rounded-full 
+            bg-black text-white font-semibold cursor-pointer py-3 px-6 rounded-full 
             transform transition-all duration-300
             ${isHovered ? 'scale-105' : ''}
           `}

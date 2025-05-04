@@ -19,7 +19,7 @@ const InfoSection = () => {
           <p className="text-gray-800 font-medium  text-xl">
             Share experiences in a safe, anonymous space.
           </p>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-full">
+          <button className="bg-blue-500 cursor-pointer hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-full">
             Explore MindSpace
           </button>
         </div>

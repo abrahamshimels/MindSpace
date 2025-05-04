@@ -15,7 +15,7 @@ const FinalSection = () => {
         <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-6 max-w-3xl">
           Because Mental Health Should Be as Accessible as Lecture Notes
         </h2>
-        <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-lg font-semibold transition duration-300">
+        <button className="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white px-6 py-4 rounded-lg font-semibold transition duration-300">
           More about our impact
         </button>
       </div>

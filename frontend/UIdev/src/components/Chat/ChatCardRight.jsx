@@ -9,7 +9,7 @@ function ChatCardRight() {
         <div className="w-6 h-6 sm:w-50 sm:h-50 bg-[#F0FFFF] rounded-full">
         <IconContext.Provider
         value={{
-          size: 'text-xl sm:text-6xl md:text-8xl', // Adjust these sizes as needed
+          size: 'text-xl sm:text-6xl md:text-8xl', 
           color: '#908686',
         }}
       >

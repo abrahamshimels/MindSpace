@@ -101,6 +101,10 @@ const MoodTracker = () => {
               <Button type="submit" variant="default">Save Entry</Button>
             </div>
           </form>
+          <div className="flex justify-start">
+              <Button type="submit" variant="default">See Last Entry</Button>
+          </div>
+
         </CardContent>
       </Card>
       
