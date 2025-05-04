@@ -1,14 +1,16 @@
-import React from 'react'
+import React from 'react';
+import Hero from '../components/community/Hero';
+import ForumGrid from '../components/community/ForumGrid';
+import CreateForum from '../components/community/CreateForum';
 
 function Community() {
   return (
-    <div className='mt-15 h-screen text-center'>
-    <h1> community page</h1>
-    <h2> Hi Translated our Figma design into a React component and render over here.</h2>
-   
- 
-  </div>
-  )
+    <div className="text-center">
+      <Hero />
+      <ForumGrid />
+      <CreateForum />
+    </div>
+  );
 }
 
-export default Community
+export default Community;
