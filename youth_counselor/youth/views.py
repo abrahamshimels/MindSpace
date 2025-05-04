@@ -19,14 +19,29 @@ from .models import User  # Assuming you have a custom User model
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
+from .forms import ProfileForm
+from django.contrib.auth.decorators import login_required
 
-
+from .serializers import ProfileSerializer
 
 from rest_framework.generics import CreateAPIView
 from .serializers import RegisterSerializer
-
+from rest_framework import generics
+#from rest_framework.permissions import IsAuthenticated
+from .models import Article
+from .serializers import ArticleSerializer
+from .permissions import IsAdmin
 
 from rest_framework import serializers
+from .models import CustomUser
+from django.views.generic import DetailView , UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from rest_framework.viewsets import ModelViewSet
+
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -195,4 +210,72 @@ class ProtectedView(APIView):
         return Response({
             "message": f"Hello {request.user.username}!",
             "status": "This is a protected route"
-        })
+ 
+       })
+        
+ 
+class ArticleListCreateView(generics.ListCreateAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = [IsAdmin]  
+    def perform_create(self, serializer):
+        # Automatically associate the current user as the author
+        serializer.save(author=self.request.user) 
+        
+
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = CustomUser
+    template_name = 'profile_update.html'
+    fields = ['username', 'email', 'first_name', 'last_name']  # Add your custom fields here
+    success_url = '/profile/'
+
+    def get_object(self):
+        return self.request.user        
+
+@login_required
+def update_profile(request):
+    user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_detail')
+    else:
+        form = ProfileForm(instance=user)
+    return render(request, 'youth/profile_update.html', {'form': form}) 
+
+
+class ProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = ProfileSerializer(request.user)
+        return Response(serializer.data)
+
+    def put(self, request):
+        serializer = ProfileSerializer(request.user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400) 
+    
+      
+class ProfileDetailView(LoginRequiredMixin, DetailView):
+    model = CustomUser
+    template_name = 'profile_detail.html'  
+    context_object_name = 'profile'
+    
+    
+    def get_object(self):
+        return self.request.user    
+    
+
+class ArticleViewSet(ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    permission_classes = [IsAuthenticated]  
+ 
+ 
+class ArticleListCreateView(generics.ListCreateAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer     
