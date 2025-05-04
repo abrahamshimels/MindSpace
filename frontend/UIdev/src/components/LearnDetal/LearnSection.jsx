@@ -7,7 +7,7 @@ function LearnSection() {
     <div>
       {" "}
       <div className="flex justify-center ">
-        <img className="object-cover mt-18" src={Image} alt="image" />
+        <img className="w-150 h-100 object-cover mt-18" src={Image} alt="image" />
       </div>
       <p className="p-7">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore

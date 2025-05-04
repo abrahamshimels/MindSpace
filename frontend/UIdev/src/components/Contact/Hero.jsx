@@ -13,6 +13,10 @@ function Hero() {
         />
       </div>
       <div className="relative container mx-auto px-4 h-full flex flex-col justify-center">
+      <h1 className="text-4xl flex justify-center md:text-5xl text-white font-bold leading-tight mb-6 p-2 cursor-pointer">
+              Contact us
+            </h1>
+
         <div className="flex flex-row justify-center items-center">
           <Link to="/">
             <h1 className="text-4xl md:text-5xl text-white font-bold leading-tight mb-6 p-2 cursor-pointer">

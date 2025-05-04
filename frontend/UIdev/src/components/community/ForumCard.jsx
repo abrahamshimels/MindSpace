@@ -1,7 +1,14 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ForumCard = ({ title, description }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  };
 
   return (
     <div
@@ -13,6 +20,10 @@ const ForumCard = ({ title, description }) => {
       <p className="text-gray-700 mb-8">{description}</p>
 
       <div className="flex justify-center md:justify-end">
+        <Link
+        to={`1`}
+        onClick={scrollToTop}
+        >
         <button
           className={`
             bg-black text-white font-semibold py-3 px-6 rounded-full 
@@ -22,6 +33,8 @@ const ForumCard = ({ title, description }) => {
         >
           Get Involved
         </button>
+        </Link>
+       
       </div>
     </div>
   );

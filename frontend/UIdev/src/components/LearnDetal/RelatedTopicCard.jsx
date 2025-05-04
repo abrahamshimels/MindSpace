@@ -1,6 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function RelatedTopicCard({ title, description, variant = 'primary' }) {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  };
   return (
     <div>
       <div
@@ -16,9 +24,17 @@ function RelatedTopicCard({ title, description, variant = 'primary' }) {
             ? `${description.substring(0, 150)}...`
             : description}
         </p>
+        <Link 
+        to={``}
+        onClick={scrollToTop}
+        className="flex justify-center"
+        >
+          
         <button className="self-center bg-[#fff2f2] border-none rounded-full py-3 px-8 font-poppins font-semibold text-base cursor-pointer transition-all duration-300 ease-in-out transform hover:translate-y-1 hover:shadow-lg">
           Read More
         </button>
+        </Link>
+        
       </div>
     </div>
   );
