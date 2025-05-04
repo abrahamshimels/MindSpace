@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'authentication',
     'appointment',
+    'wellness',
     'rest_framework_simplejwt.token_blacklist',
     'drf_yasg',
     'forum',
