@@ -1,19 +1,20 @@
 from rest_framework import serializers
-from .models import User
+from .models import CustomUser
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class RegisterSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, min_length=8)
-
     class Meta:
-        model = User
-        fields = ('email','username','dob','role','password')
-
+        model = CustomUser
+        fields = ['email','dob','role','password']
+        extra_kwargs = {'password': {'write_only': True}}
     def create(self, validated_data):
-        user = User.objects.create_user(
-            email=validated_data['email'],
-            username=validated_data['username'],
-            dob=validated_data['dob'],
-            role=validated_data['role'],
-            password=validated_data['password']
-        )
-        return user
+        return CustomUser.objects.create_user(**validated_data)
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        token['role'] = user.role
+        return token
+class LogoutSerializer(serializers.Serializer):
+    refresh = serializers.CharField(required=True)
