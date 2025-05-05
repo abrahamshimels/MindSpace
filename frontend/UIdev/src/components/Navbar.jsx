@@ -6,6 +6,7 @@ import CommunityDropDown from "./DropDown";
 import { LearnDropDown } from "./DropDown";
 import { ToolDropDown } from "./DropDown";
 import { Link } from "react-router-dom";
+import { LearnDropDownItem } from "./DropDownList";
 
 function Navbar() {
   const scrollToTop = () => {
@@ -21,6 +22,7 @@ function Navbar() {
   const navRef = useRef(null);
   const [searchClicked, setSearchClicked] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [search, setSearch] = useState(""); // Add this line
 
   const handleMouseEnter = () => {
     clearTimeout(timeoutRef.current);
@@ -40,10 +42,17 @@ function Navbar() {
   return (
     <div className="fixed top-0 z-100 w-full" ref={navRef}>
       <div className="sm:hidden flex justify-end p-4 bg-[rgba(0,0,0,0.8)]  ">
-        <h1 className={`${searchClicked? "h-6" :"mt-3"} text-white absolute left-5 topx-4`}>Logo</h1>
+        <h1
+          className={`${
+            searchClicked ? "h-6" : "mt-3"
+          } text-white absolute left-5 topx-4`}
+        >
+          Logo
+        </h1>
         {searchClicked ? (
-          <FaTimes className="w-6 h-6 cursor-pointer text-red-500 hover:text-red-100-400" 
-          onClick={()=>setSearchClicked(!searchClicked)}
+          <FaTimes
+            className="w-6 h-6 cursor-pointer text-red-500 hover:text-red-100-400"
+            onClick={() => setSearchClicked(!searchClicked)}
           />
         ) : (
           <button
@@ -58,30 +67,29 @@ function Navbar() {
           </button>
         )}
 
-        {
-          searchClicked ? (
-            <input type="text"
+        {searchClicked && (
+          <input
+            type="text"
             placeholder="search..."
-             className={`${searchClicked? "my-3":""} absolute px-2 focus:outline-none h-8 mt-0.5 rounded-full bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%]`} />
-          )
-          :( <PiMagnifyingGlassBold className="text-white cursor-pointer absolute top-8 left-60"
-            onClick={()=>setSearchClicked(!searchClicked)}
-           />)
-        }
-
-       
+            className={`${
+              searchClicked ? "my-3" : ""
+            } absolute px-2 focus:outline-none h-8 mt-0.5 rounded-full bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%]`}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        )}
       </div>
 
       <div className="hidden sm:flex relative justify-between items-center bg-[rgba(0,0,0,0.8)]   text-white w-full py-1 px-4">
         <h1 className="text-xl font-bold my-3 ml-4">Logo</h1>
-        {
-          searchClicked ? ((
-            <input type="text"
+        {searchClicked ? (
+          <input
+            type="text"
             placeholder="search..."
-             className="absolute px-5 z-200 my-10 focus:outline-none h-8 mt-0.5 rounded-full text-black bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%]" />
-          ))
-          :(
-            <ul className="flex flex-row items-center space-x-1">
+            className="absolute px-5 z-200 my-10 focus:outline-none h-8 mt-0.5 rounded-full text-black bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%]"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        ) : (
+          <ul className="flex flex-row items-center space-x-1">
             <li className="p-4 hover:text-red-100 cursor-pointer">
               {" "}
               <Link
@@ -94,7 +102,7 @@ function Navbar() {
                 Home
               </Link>
             </li>
-  
+
             <div className="flex items-center group relative">
               <li className="p-4 hover:text-red-100 cursor-pointer">
                 <Link
@@ -161,6 +169,7 @@ function Navbar() {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 className="p-1 hover:text-red-100 cursor-pointer"
+                onMouseOver={() => setHoverIndex(3)}
               >
                 <IoMdArrowDropdown
                   className={`transition-transform duration-200 ${
@@ -170,7 +179,7 @@ function Navbar() {
                 />
               </li>
             </div>
-  
+
             <li className="p-4 hover:text-red-100 cursor-pointer">
               <Link
                 to="/support"
@@ -205,20 +214,20 @@ function Navbar() {
               </Link>
             </li>
           </ul>
+        )}
 
-          )
-        }
-
-       
         <div className="flex items-center mr-4">
-          {
-            searchClicked ? (<FaTimes className="w-6 h-6 cursor-pointer text-red-500 hover:text-red-100-400" 
-            onClick={()=>setSearchClicked(!searchClicked)}/>)
-            : (<PiMagnifyingGlassBold className="w-5 h-5 cursor-pointer hover:text-gray-300" 
-              onClick={()=>setSearchClicked(!searchClicked)}
-            />)
-          }
-          
+          {searchClicked ? (
+            <FaTimes
+              className="w-6 h-6 cursor-pointer text-red-500 hover:text-red-100-400"
+              onClick={() => setSearchClicked(!searchClicked)}
+            />
+          ) : (
+            <PiMagnifyingGlassBold
+              className="w-5 h-5 cursor-pointer hover:text-gray-300"
+              onClick={() => setSearchClicked(!searchClicked)}
+            />
+          )}
         </div>
       </div>
 
@@ -341,6 +350,28 @@ function Navbar() {
               {hoverIndex === 3 && <CommunityDropDown />}
             </div>
           </div>
+        </div>
+      )}
+
+      {searchClicked && (
+        <div className="w-100  absolute mx-h-[80vh] bg-black top-13 flex flex-col">
+          <div className="flex flex-col absolute top-3 left-50">
+          {LearnDropDownItem.filter((item) =>
+            search.toLowerCase() === ""
+              ? item
+              : item.topic.toLowerCase().includes(search.toLowerCase())
+          ).map((item) => (
+            <Link
+              onClick={() => setSearchClicked(!searchClicked)}
+              to={`/Learn/${item.topic}`}
+              key={item.topic}
+              className="text-white  bg-[rgba(0,0,0,0.8)] p-2 cursor-pointer hover:text-red-100 "
+            >
+              {item.topic}
+            </Link>
+          ))}
+            </div>
+        
         </div>
       )}
     </div>

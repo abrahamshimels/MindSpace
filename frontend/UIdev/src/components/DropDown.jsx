@@ -9,7 +9,7 @@ export function ToolDropDown(){
                 ToolDropDownItem.map((list)=>(
                     <ul className='flex flex-col py-5 '>
                         <li className='text-white'>
-                            {list.title}
+                            {list.topic}
                         </li>
                     </ul>
                 ))
@@ -25,7 +25,7 @@ export function LearnDropDown(){
                 LearnDropDownItem.map((list)=>(
                     <ul className='flex flex-col py-5 '>
                         <li className='text-white'>
-                            {list.title}
+                            {list.topic}
                         </li>
                     </ul>
                 ))
@@ -42,7 +42,7 @@ function CommunityDropDown(){
                 CommunityDropDownItem.map((list)=>(
                     <ul className='flex flex-col py-5 '>
                         <li className='text-white'>
-                            {list.title}
+                            {list.topic}
                         </li>
                     </ul>
                 ))
