@@ -8,37 +8,37 @@ const ForumGrid = () => {
       id: 1,
       title: "Discussion about stress....",
       description:
-        "Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry",
+        "For me, stress often feels like this constant underlying pressure, a mental juggling act where I'm trying to keep too many balls in the air – deadlines, responsibilities, personal stuff. Sometimes it manifests physically",
     },
     {
       id: 2,
-      title: "Discussion about stress....",
+      title: "Discussion about Anxiety....",
       description:
-        "Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry",
+        "I'm trying to keep too many balls in the air – deadlines, responsibilities, personal stuff. Sometimes it manifests physically",
     },
     {
       id: 3,
-      title: "Discussion about stress....",
+      title: "Discussion about depression....",
       description:
-        "Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry",
+        "What about you? What does stress feel like for you, and what are some of the common things that trigger it in your life? It could be anything from work or school pressures to relationship issues or even just the everyday hustle and bustle",
     },
     {
       id: 4,
-      title: "Discussion about stress....",
+      title: "Discussion about accadamic pressure....",
       description:
-        "Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry",
+        "So, what's been going on with you lately? Anything interesting, challenging, exciting, or even just a little bit different from the usual? It",
     },
     {
       id: 5,
-      title: "Discussion about stress....",
+      title: "Discussion about financial stress....",
       description:
-        "Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry",
+        "So, what's been going on with you lately? Anything interesting, challenging, exciting, or even just a little bit different from the usual? Itm has been the industry",
     },
     {
       id: 6,
       title: "Discussion about stress....",
       description:
-        "Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry",
+        "So, what's been going on with you lately? Anything interesting, challenging, exciting, or even just a little bit different from the usual? It",
     },
   ];
 
@@ -53,7 +53,7 @@ const ForumGrid = () => {
           ))}
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex mt-10 justify-center">
           <button className="bg-black text-white cursor-pointer text-xl font-semibold py-3 px-10 rounded-full hover:bg-gray-800 transition-colors duration-300">
             See More Forum
           </button>

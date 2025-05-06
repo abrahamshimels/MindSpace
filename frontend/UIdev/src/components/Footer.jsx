@@ -60,8 +60,7 @@ const Footer = () => {
           {/* Logo and Description */}
           <div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              pharetra condimentum.
+            Mindspace: Find Your Calm and Focus
             </p>
           </div>
 
@@ -70,15 +69,15 @@ const Footer = () => {
             <h3 className="font-bold mb-4">Contact Information</h3>
             <span className="my-2 flex flex-row items-center">
               <FaLocationDot />
-              <p className="m-2">+251 912 34 56 78</p>
+              <p className="m-2">09522233</p>
             </span>
             <span className=" my-2 flex flex-row items-center">
               <MdOutlineLocalPostOffice />
-              <p className="m-2"> 732 Despard St, Atlanta</p>
+              <p className="m-2">  zefmesh megenagna B-12 </p>
             </span>
             <span className="my-2 flex flex-row items-center">
               <FaPhone />
-              <p className="m-2"> 732 Despard St, Atlanta</p>
+              <p className="m-2"> megenagna</p>
             </span>
 
           </div>

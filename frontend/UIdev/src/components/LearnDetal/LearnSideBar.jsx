@@ -6,8 +6,6 @@ function LearnSideBar() {
     <div>
         <aside>
             <RecommendedPosts/>
-            <RecommendedPosts/>
-            <RecommendedPosts/>
         </aside>
 
     </div>

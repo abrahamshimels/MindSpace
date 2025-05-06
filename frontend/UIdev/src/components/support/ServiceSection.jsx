@@ -60,7 +60,7 @@ const ServiceSection = () => {
     <>
       <section className="py-16 px-4 md:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-semibold mb-12 text-center">University Services</h2>
+          <h2 className="text-3xl font-semibold mb-12 text-center">Our Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {universityServices.map((service, index) => (
               <ServiceCard key={index} service={service} />

@@ -7,7 +7,7 @@ import professionData from './ProfessionData';
 function ProfessionSection() {
   const headerTitle = 'Our Mental Health Professionals';
   const headerDescription =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.";
+    "Dedicated experts in mental health and psychology, our professionals provide skilled support and guidance. Grounded in these disciplines, they deliver comprehensive and evidence-based care. Specializing in fostering well-being, our team offers insightful and effective support to those seeking to prioritize their mental health.";
 
   return (
     <section className='py-16 px-4 md:px-8'>

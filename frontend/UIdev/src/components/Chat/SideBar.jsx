@@ -9,7 +9,6 @@ function SideBar() {
             <aside className=" pb-20 h-full">
                 <ChatTopic/>
                 <RelatedChat/>
-                <RelatedChat/>
                 
             </aside>
 

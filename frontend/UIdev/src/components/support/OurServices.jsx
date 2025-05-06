@@ -4,7 +4,7 @@ const OurServices = () => {
   return (
     <section className="py-16 px-4 md:px-8 bg-blue-50">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-semibold mb-12 text-center">Our Services</h2>
+        <h2 className="text-3xl font-semibold mb-12 text-center">Our Comprehensive Services</h2>
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1">
             <img 
@@ -15,7 +15,7 @@ const OurServices = () => {
           </div>
           <div className="flex-1 bg-white p-8 rounded-lg shadow-md">
             <h3 className="text-2xl font-semibold mb-4">
-              Comprehensive Support for Student Well-being
+              Comprehensive Support for youth Well-being
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
               <div className="bg-white p-6 rounded-md">

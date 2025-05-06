@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const TopicCard = ({ id, title, description, variant = 'primary' }) => {
+const TopicCard = ({title, description, variant = 'primary' }) => {
 
   const scrollToTop = () => {
     window.scrollTo({

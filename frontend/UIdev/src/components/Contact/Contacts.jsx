@@ -52,19 +52,17 @@ function Contacts() {
     <div className="w-full flex flex-col px-10 sm:w-[50%] mt-6 sm:mt-0 mb-10 md:ml-10 sm:mx-10 transition-shadow duration-300 hover:shadow-xl">
       <h1 className="text-[clamp(1rem,5vw,3rem)]">Get In Touch</h1>
       <p className="mb-4">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s,
+      Ready to prioritize your well-being? Contact our dedicated team today to learn more about how we can support you. We're here to help you take the next step.
       </p>
       <div className="flex flex-col">
         <div className="flex flex-col">
           <div className="flex flex-col">
             <span className="inline-flex items-center space-x-2 my-2">
-              <h3 className="text-[clamp(1.3rem,2vw,2rem)]">Lorem Ipsum</h3>
+              <h3 className="text-[clamp(1.3rem,2vw,2rem)]">get in touch</h3>
             </span>
             <span className="inline-flex items-center space-x-2 my-2">
               <FaPhoneAlt className="text-blue-500" />
-              <p className="m-0">+251 912 34 56 78</p>
+              <p className="m-0">09 12 34 56 78</p>
             </span>
             <span className="inline-flex items-center space-x-2 my-2">
               <FaEnvelope className="text-blue-500" />
@@ -72,16 +70,16 @@ function Contacts() {
             </span>
             <span className="inline-flex items-center space-x-2 my-2">
               <IoLocation className="text-blue-500" />
-              <p className="m-0">8465 Beahan Roads,</p>
+              <p className="m-0">8465 megenagn ,</p>
             </span>
           </div>
           <div className="flex flex-col">
             <span className="inline-flex items-center space-x-2 my-2">
-              <h3 className="text-[clamp(1.3rem,2vw,2rem)]">Lorem Ipsum</h3>
+              <h3 className="text-[clamp(1.3rem,2vw,2rem)]">get in touch</h3>
             </span>
             <span className="inline-flex items-center space-x-2 my-2">
               <FaPhoneAlt className="text-blue-500" />
-              <p className="m-0">+251 912 34 56 78</p>
+              <p className="m-0">09 12 34 56 78</p>
             </span>
             <span className="inline-flex items-center space-x-2 my-2">
               <FaEnvelope className="text-blue-500" />
@@ -89,11 +87,11 @@ function Contacts() {
             </span>
             <span className="inline-flex items-center space-x-2 my-2">
               <IoLocation className="text-blue-500" />
-              <p className="m-0">8465 Beahan Roads,</p>
+              <p className="m-0">8465 zegmesh ,</p>
             </span>
             <span className="inline-flex items-center space-x-2 my-2 cursor-pointer transition-colors duration-300 hover:text-blue-600">
               <MdArrowForwardIos className="text-lg" />
-              <p className="m-0">View on Google Maps</p>
+             
             </span>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Image from "../../assets/image/wright-building-center-lewChc3IYS8-unsplash.jpg";
+const Image =   "https://images.unsplash.com/photo-1742844019094-cefa1969b331?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 function Hero() {
   return (
@@ -18,7 +18,7 @@ function Hero() {
             </h1>
 
         <div className="flex flex-row justify-center items-center">
-          <Link to="/">
+          <Link to="/home">
             <h1 className="text-4xl md:text-5xl text-white font-bold leading-tight mb-6 p-2 cursor-pointer">
               Home
             </h1>

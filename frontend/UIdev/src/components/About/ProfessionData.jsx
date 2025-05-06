@@ -1,9 +1,9 @@
-import prof1 from '../../assets/image/prof1.jpg';
-import prof2 from '../../assets/image/prof2.jpg';
-import prof3 from '../../assets/image/prof3.jpg';
-import prof4 from '../../assets/image/prof4.jpg';
-import prof5 from '../../assets/image/prof5.jpg';
-import prof6 from '../../assets/image/prof6.jpg';
+const prof1 = 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+const prof2 = 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+const prof3 = 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZG9jdG9yc3xlbnwwfHwwfHx8MA%3D%3D';
+const prof4 = 'https://unsplash.com/photos/man-in-white-scrub-suit-wearing-green-mask-DPEPYPBZpB8';
+const prof5 = 'https://plus.unsplash.com/premium_photo-1661764878654-3d0fc2eefcca?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRvY3RvcnxlbnwwfHwwfHx8MA%3D%3D';
+const prof6 = 'https://plus.unsplash.com/premium_photo-1673958772332-ca01085725f8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
 const professionData = [
   {
@@ -28,7 +28,7 @@ const professionData = [
     id: 'prof-4',
     name: 'Ben Carter',
     description: 'Focuses on trauma-informed care and resilience building.',
-    imageUrl: prof4,  
+    imageUrl: prof6,  
   },
   {
     id: 'prof-5',

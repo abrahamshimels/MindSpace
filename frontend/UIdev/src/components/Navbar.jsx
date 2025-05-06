@@ -21,7 +21,6 @@ function Navbar() {
   const timeoutRef = useRef(null);
   const navRef = useRef(null);
   const [searchClicked, setSearchClicked] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [search, setSearch] = useState(""); // Add this line
 
   const handleMouseEnter = () => {
@@ -47,7 +46,7 @@ function Navbar() {
             searchClicked ? "h-6" : "mt-3"
           } text-white absolute left-5 topx-4`}
         >
-          Logo
+          MindSpace
         </h1>
         {searchClicked ? (
           <FaTimes
@@ -67,6 +66,16 @@ function Navbar() {
           </button>
         )}
 
+        <div className=" absolute  flex items-center mr-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        
+         
+            <PiMagnifyingGlassBold
+              className=" cursor-pointer text-white hover:text-red-100"
+              onClick={() => setSearchClicked(!searchClicked)}
+            />
+         
+        </div>
+
         {searchClicked && (
           <input
             type="text"
@@ -80,7 +89,7 @@ function Navbar() {
       </div>
 
       <div className="hidden sm:flex relative justify-between items-center bg-[rgba(0,0,0,0.8)]   text-white w-full py-1 px-4">
-        <h1 className="text-xl font-bold my-3 ml-4">Logo</h1>
+        <h1 className="text-xl font-bold my-3 ml-4">MindSpace</h1>
         {searchClicked ? (
           <input
             type="text"
@@ -93,7 +102,7 @@ function Navbar() {
             <li className="p-4 hover:text-red-100 cursor-pointer">
               {" "}
               <Link
-                to="/"
+                to="/home"
                 onClick={() => {
                   setIsOpen(false);
                   scrollToTop();
@@ -213,6 +222,20 @@ function Navbar() {
                 Contact
               </Link>
             </li>
+            <li className="p-4 hover:text-red-100 py-0 bg-blue-400 rounded cursor-pointer">
+              <button>
+                <Link
+                  to="/"
+                  onClick={() => {
+                    setIsOpen(false);
+                    scrollToTop();
+                  }}
+                  className=""
+                >
+                  logout
+                </Link>
+              </button>
+            </li>
           </ul>
         )}
 
@@ -328,6 +351,20 @@ function Navbar() {
               Contact
             </Link>
           </li>
+          <li className="p-4 hover:text-red-100 py-0  rounded cursor-pointer">
+            <button>
+              <Link
+                to="/"
+                onClick={() => {
+                  setIsOpen(false);
+                  scrollToTop();
+                }}
+                className="bg-blue-400"
+              >
+                logout
+              </Link>
+            </button>
+          </li>
         </ul>
       </div>
 
@@ -337,7 +374,7 @@ function Navbar() {
           className="hidden sm:block fixed bg-[rgba(0,0,0,0.8)] shadow-lg z-50 overflow-hidden"
           style={{
             top: "4rem",
-            height: "80vh",
+            height: "50vh",
             width: "100vw",
           }}
           onMouseEnter={handleMouseEnter}
@@ -356,22 +393,21 @@ function Navbar() {
       {searchClicked && (
         <div className="w-100  absolute mx-h-[80vh] bg-black top-13 flex flex-col">
           <div className="flex flex-col absolute top-3 left-50">
-          {LearnDropDownItem.filter((item) =>
-            search.toLowerCase() === ""
-              ? item
-              : item.topic.toLowerCase().includes(search.toLowerCase())
-          ).map((item) => (
-            <Link
-              onClick={() => setSearchClicked(!searchClicked)}
-              to={`/Learn/${item.topic}`}
-              key={item.topic}
-              className="text-white  bg-[rgba(0,0,0,0.8)] p-2 cursor-pointer hover:text-red-100 "
-            >
-              {item.topic}
-            </Link>
-          ))}
-            </div>
-        
+            {LearnDropDownItem.filter((item) =>
+              search.toLowerCase() === ""
+                ? item
+                : item.topic.toLowerCase().includes(search.toLowerCase())
+            ).map((item) => (
+              <Link
+                onClick={() => setSearchClicked(!searchClicked)}
+                to={`/Learn/${item.topic}`}
+                key={item.topic}
+                className="text-white  bg-[rgba(0,0,0,0.8)] p-2 cursor-pointer hover:text-red-100 "
+              >
+                {item.topic}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>

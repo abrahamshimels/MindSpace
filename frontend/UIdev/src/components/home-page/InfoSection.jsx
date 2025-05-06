@@ -2,8 +2,15 @@ import React from 'react';
 import img1 from '../../assets/Homepage/img1.png'; // Replace with your actual image path
 import img2 from '../../assets/Homepage/img2.png';
 import img3 from '../../assets/Homepage/img3.png';
+import { Link } from 'react-router-dom';
 
 const InfoSection = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  };
   return (
     <section className="bg-white ml-10  pt-16  px-4 sm:px-8 max-w-7xl mx-auto">
       {/* Heading */}
@@ -19,9 +26,14 @@ const InfoSection = () => {
           <p className="text-gray-800 font-medium  text-xl">
             Share experiences in a safe, anonymous space.
           </p>
+          <Link to= "/aboutus"
+          onClick={scrollToTop}
+          >
           <button className="bg-blue-500 cursor-pointer hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-full">
             Explore MindSpace
           </button>
+          </Link>
+          
         </div>
 
         {/* Second Column */}

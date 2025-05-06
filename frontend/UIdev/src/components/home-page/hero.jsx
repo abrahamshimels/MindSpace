@@ -24,7 +24,7 @@ const Hero = () => {
           MindSpace is here to help you manage stress, connect with peers, and
           access professional support — anonymously and safely.
         </p>
-        <Link to={`support`}
+        <Link to='/support'
         onClick={scrollToTop}>
         <button className="bg-purple-400 cursor-pointer hover:bg-purple-500 text-white font-semibold py-2 px-6 rounded-full transition duration-300 transform hover:scale-105">
           Find Support

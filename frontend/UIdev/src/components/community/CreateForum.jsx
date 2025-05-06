@@ -1,6 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CreateForum = () => {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  };
   return (
     <section className="bg-azure-50 py-16">
       <div className="container mx-auto px-4">
@@ -16,9 +24,14 @@ const CreateForum = () => {
           </div>
 
           <div className="flex justify-center">
+            <Link to= "/newforum"
+            onClick={scrollToTop}
+            >
             <button className="bg-black text-white cursor-pointer text-xl font-semibold py-3 px-10 rounded-full hover:bg-gray-800 transition-colors duration-300">
               Create Forum
             </button>
+            </Link>
+            
           </div>
         </div>
       </div>
