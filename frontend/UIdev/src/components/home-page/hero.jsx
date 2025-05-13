@@ -38,12 +38,12 @@ const Hero = () => {
           <img
             src={image1}
             alt="Mental Wellness 1"
-            className="w-full h-full object-cover rounded-lg shadow-lg z-10 transform rotate-[-8deg] sm:rotate-[-12deg] lg:rotate-[-15deg]"
+            className="w-full h-full object-cover rounded-lg shadow-lg z-0 transform rotate-[-8deg] sm:rotate-[-12deg] lg:rotate-[-15deg]"
           />
           <img
             src={image2}
             alt="Mental Wellness 2"
-            className="w-2/5 sm:w-3/5 h-3/5 md:h-3/5 object-cover rounded-lg shadow-md absolute right-0 sm:right-4 md:right-8 lg:-right-28 -bottom-4 sm:bottom-0 md:bottom-4 lg:bottom-20 z-20"
+            className="w-2/5 sm:w-3/5 h-3/5 md:h-3/5 object-cover rounded-lg shadow-md absolute right-0 sm:right-4 md:right-8 lg:-right-28 -bottom-4 sm:bottom-0 md:bottom-4 lg:bottom-20 z-0"
           />
         </div>
       </div>

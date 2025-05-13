@@ -1,12 +1,12 @@
-import React, { useState, useRef } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { useState } from "react";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { MdOutlineCancelPresentation } from "react-icons/md";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { IoMdArrowDropdown } from "react-icons/io";
+import { Link } from "react-router-dom";
 import CommunityDropDown from "./DropDown";
 import { LearnDropDown } from "./DropDown";
 import { ToolDropDown } from "./DropDown";
-import { Link } from "react-router-dom";
-import { LearnDropDownItem } from "./DropDownList";
 
 function Navbar() {
   const scrollToTop = () => {
@@ -15,402 +15,273 @@ function Navbar() {
       behavior: "instant",
     });
   };
-  const [isHovered, setIsHovered] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hover, setHover] = useState(false);
   const [hoverIndex, setHoverIndex] = useState(null);
-  const timeoutRef = useRef(null);
-  const navRef = useRef(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchClicked, setSearchClicked] = useState(false);
-  const [search, setSearch] = useState(""); // Add this line
-
-  const handleMouseEnter = () => {
-    clearTimeout(timeoutRef.current);
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setIsHovered(false);
-    }, 200);
-  };
-
-  const toggleMobileMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <div className="fixed top-0 z-100 w-full" ref={navRef}>
-      <div className="sm:hidden flex justify-end p-4 bg-[rgba(0,0,0,0.8)]  ">
-        <h1
-          className={`${
-            searchClicked ? "h-6" : "mt-3"
-          } text-white absolute left-5 topx-4`}
-        >
-          MindSpace
-        </h1>
+    <>
+      <div
+        className={`bg-[rgba(0,0,0,0.8)] fixed top-0 left-0 w-full transition-[height] duration-10 ease-in-out ${
+          isDropdownOpen || isMobileMenuOpen
+            ? "h-100 sm:h-96 transition-all duration-100 "
+            : "h-15"
+        } z-10`}
+      ></div>
+
+      <div className=" fixed z-30  top-0 left-0 w-full flex items-center justify-between h-15">
+        <Link to="/home" onClick={scrollToTop}>
+          <h1 className="text-white ml-10">MindSpace</h1>
+        </Link>
         {searchClicked ? (
-          <FaTimes
-            className="w-6 h-6 cursor-pointer text-red-500 hover:text-red-100-400"
+          <MdOutlineCancelPresentation
             onClick={() => setSearchClicked(!searchClicked)}
+            className="mr-4 sm:mr-7 cursor-pointer text-red-600"
           />
         ) : (
           <button
-            onClick={toggleMobileMenu}
-            className="text-white focus:outline-none my-2.5 cursor-pointer"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="sm:hidden absolute top-center left-114 cursor-pointer"
           >
-            {isOpen ? (
-              <FaTimes className="w-6 h-6 text-red-500 hover:text-red-100-400" />
+            {isMobileMenuOpen ? (
+              <MdOutlineCancelPresentation className="mr-4 text-red-600" />
             ) : (
-              <FaBars className="w-6 h-6" />
+              <RxHamburgerMenu className="text-white mr-4 hover:text-red-200" />
             )}
           </button>
         )}
 
-        <div className=" absolute  flex items-center mr-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        
-         
-            <PiMagnifyingGlassBold
-              className=" cursor-pointer text-white hover:text-red-100"
-              onClick={() => setSearchClicked(!searchClicked)}
-            />
-         
-        </div>
-
-        {searchClicked && (
-          <input
-            type="text"
-            placeholder="search..."
-            className={`${
-              searchClicked ? "my-3" : ""
-            } absolute px-2 focus:outline-none h-8 mt-0.5 rounded-full bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%]`}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        )}
-      </div>
-
-      <div className="hidden sm:flex relative justify-between items-center bg-[rgba(0,0,0,0.8)]   text-white w-full py-1 px-4">
-        <h1 className="text-xl font-bold my-3 ml-4">MindSpace</h1>
         {searchClicked ? (
           <input
             type="text"
-            placeholder="search..."
-            className="absolute px-5 z-200 my-10 focus:outline-none h-8 mt-0.5 rounded-full text-black bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%]"
-            onChange={(e) => setSearch(e.target.value)}
+            placeholder="search...."
+            className="hidden absolute left-40 sm:block w-[80%] h-8 rounded-full bg-white text-black placeholder-gray-500 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         ) : (
-          <ul className="flex flex-row items-center space-x-1">
-            <li className="p-4 hover:text-red-100 cursor-pointer">
-              {" "}
-              <Link
-                to="/home"
-                onClick={() => {
-                  setIsOpen(false);
-                  scrollToTop();
-                }}
-              >
-                Home
-              </Link>
-            </li>
-
-            <div className="flex items-center group relative">
-              <li className="p-4 hover:text-red-100 cursor-pointer">
+          <div
+            className={`${
+              isMobileMenuOpen
+                ? "absolute z-50  top-full left-0 w-full transition-opacity duration-300 ease-in-out"
+                : "hidden"
+            } sm:block  flex flex-row`}
+          >
+            <ul
+              className={`${
+                isMobileMenuOpen
+                  ? "flex w-full space-y-4 sm:space-y-9 flex-col transition-opacity duration-300 ease-in-out"
+                  : "sm:flex-row"
+              } flex items-center sm:space-x-9 sm:mr-30`}
+            >
+              <li className=" text-white hover:text-red-200 cursor-pointer">
+                {" "}
                 <Link
-                  to="/learn"
+                  to="/home"
                   onClick={() => {
-                    setIsOpen(false);
                     scrollToTop();
+                    setIsMobileMenuOpen(false);
+                    setIsDropdownOpen(false);
+                    setHover(false);
                   }}
                 >
-                  Learn
+                  home
                 </Link>
               </li>
-              <li
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                onMouseOver={() => setHoverIndex(1)}
-                className="p-1 hover:text-red-100 cursor-pointer"
-              >
+              <div className="flex flex-row ">
+                <li className="text-white hover:text-red-200  cursor-pointer">
+                  <Link
+                    to="/learn"
+                    onClick={() => {
+                      scrollToTop();
+                      setIsMobileMenuOpen(false);
+                      setIsDropdownOpen(false);
+                      setHover(false);
+                    }}
+                  >
+                    learn
+                  </Link>
+                </li>
                 <IoMdArrowDropdown
-                  className={`transition-transform duration-200 ${
-                    isHovered ? "rotate-180" : ""
-                  }`}
-                />
-              </li>
-            </div>
-            <div className="flex  items-center group relative">
-              <li className="p-4 hover:text-red-100 cursor-pointer">
-                <Link
-                  to="/tool"
-                  onClick={() => {
-                    setIsOpen(false);
-                    scrollToTop();
+                  onMouseEnter={() => {
+                    setHover(true);
+                    setHoverIndex(1);
+                    setIsDropdownOpen(true);
                   }}
-                >
-                  Tools
-                </Link>
-              </li>
-              <li
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                onMouseOver={() => setHoverIndex(2)}
-                className="p-1 hover:text-red-100 cursor-pointer"
-              >
+                  onMouseLeave={() => {
+                    setHover(false);
+                    setIsDropdownOpen(false);
+                  }}
+                  className="text-white cursor-pointer hover:text-red-200"
+                  style={{ marginTop: 7 }}
+                />
+              </div>
+              <div className="flex flex-row ">
+                <li className=" text-white hover:text-red-200  cursor-pointer">
+                  <Link
+                    to="/tool"
+                    onClick={() => {
+                      scrollToTop();
+                      setIsMobileMenuOpen(false);
+                      setIsDropdownOpen(false);
+                      setHover(false);
+                    }}
+                  >
+                    tool
+                  </Link>
+                </li>
                 <IoMdArrowDropdown
-                  className={`transition-transform duration-200 ${
-                    isHovered ? "rotate-180" : ""
-                  }`}
-                />
-              </li>
-            </div>
-            <div className="flex items-center group relative">
-              <li className="p-4 hover:text-red-100 cursor-pointer">
-                <Link
-                  to="/community"
-                  onClick={() => {
-                    setIsOpen(false);
-                    scrollToTop();
+                  onMouseEnter={() => {
+                    setHover(true);
+                    setHoverIndex(2);
+                    setIsDropdownOpen(true);
                   }}
-                >
-                  Community
-                </Link>
-              </li>
-              <li
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                className="p-1 hover:text-red-100 cursor-pointer"
-                onMouseOver={() => setHoverIndex(3)}
-              >
+                  onMouseLeave={() => {
+                    setHover(false);
+                    setIsDropdownOpen(false);
+                  }}
+                  className="text-white  cursor-pointer hover:text-red-200"
+                  style={{ marginTop: 7 }}
+                />
+              </div>
+              <div className="flex flex-row ">
+                <li className="text-white hover:text-red-200  cursor-pointer">
+                  <Link
+                    to="/community"
+                    onClick={() => {
+                      scrollToTop();
+                      setIsMobileMenuOpen(false);
+                      setIsDropdownOpen(false);
+                      setHover(false);
+                    }}
+                  >
+                    community
+                  </Link>
+                </li>
                 <IoMdArrowDropdown
-                  className={`transition-transform duration-200 ${
-                    isHovered ? "rotate-180" : ""
-                  }`}
-                  onMouseOver={() => setHoverIndex(3)}
-                />
-              </li>
-            </div>
-
-            <li className="p-4 hover:text-red-100 cursor-pointer">
-              <Link
-                to="/support"
-                onClick={() => {
-                  setIsOpen(false);
-                  scrollToTop();
-                }}
-              >
-                Support
-              </Link>
-            </li>
-            <li className="p-4 hover:text-red-100 cursor-pointer">
-              <Link
-                to="/aboutus"
-                onClick={() => {
-                  setIsOpen(false);
-                  scrollToTop();
-                }}
-              >
-                About us
-              </Link>
-            </li>
-            <li className="p-4 hover:text-red-100 cursor-pointer">
-              <Link
-                to="/contact"
-                onClick={() => {
-                  setIsOpen(false);
-                  scrollToTop();
-                }}
-              >
-                Contact
-              </Link>
-            </li>
-            <li className="p-4 hover:text-red-100 py-0 bg-blue-400 rounded cursor-pointer">
-              <button>
-                <Link
-                  to="/"
-                  onClick={() => {
-                    setIsOpen(false);
-                    scrollToTop();
+                  onMouseEnter={() => {
+                    setHover(true);
+                    setHoverIndex(3);
+                    setIsDropdownOpen(true);
                   }}
-                  className=""
+                  onMouseLeave={() => {
+                    setHover(false);
+                    setIsDropdownOpen(false);
+                  }}
+                  className="text-white cursor-pointer hover:text-red-200"
+                  style={{ marginTop: 7 }}
+                />
+              </div>
+
+              <li className=" text-white hover:text-red-200 cursor-pointer">
+                <Link
+                  to="/support"
+                  onClick={() => {
+                    scrollToTop();
+                    setIsMobileMenuOpen(false);
+                    setIsDropdownOpen(false);
+                    setHover(false);
+                  }}
                 >
-                  logout
+                  support
                 </Link>
-              </button>
-            </li>
-          </ul>
-        )}
-
-        <div className="flex items-center mr-4">
-          {searchClicked ? (
-            <FaTimes
-              className="w-6 h-6 cursor-pointer text-red-500 hover:text-red-100-400"
-              onClick={() => setSearchClicked(!searchClicked)}
-            />
-          ) : (
-            <PiMagnifyingGlassBold
-              className="w-5 h-5 cursor-pointer hover:text-gray-300"
-              onClick={() => setSearchClicked(!searchClicked)}
-            />
-          )}
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`sm:hidden fixed inset-0 bg-[rgba(0,0,0,0.8)]  text-white z-4 mt-12 overflow-y-auto justify-between transition-all duration-300 ease-in-out ${
-          isOpen ? "opacity-100 translate-y-0" : "opacity-0 "
-        }`}
-      >
-        <ul className="flex flex-col p-1 space-y-2">
-          <li className="p-4 hover:text-red-100 rounded cursor-pointer">
-            <Link
-              to="/"
-              onClick={() => {
-                setIsOpen(false);
-                scrollToTop();
-              }}
-            >
-              Home
-            </Link>
-          </li>
-
-          <li className="p-4 hover:text-red-100 rounded cursor-pointer">
-            <div className="flex justify-between items-center">
-              <Link
-                to="/learn"
-                onClick={() => {
-                  setIsOpen(false);
-                  scrollToTop();
-                }}
-              >
-                Learn
-              </Link>
-              <IoMdArrowDropdown className="ml-2" />
-            </div>
-          </li>
-
-          <li className="p-4 hover:text-red-100 rounded cursor-pointer">
-            <div className="flex justify-between items-center">
-              <Link
-                to="/tool"
-                onClick={() => {
-                  setIsOpen(false);
-                  scrollToTop();
-                }}
-              >
-                Tools
-              </Link>
-              <IoMdArrowDropdown className="ml-2" />
-            </div>
-          </li>
-
-          <li className="p-4 hover:text-red-100 rounded cursor-pointer">
-            <div className="flex justify-between items-center">
-              <Link
-                to="/community"
-                onClick={() => {
-                  setIsOpen(false);
-                  scrollToTop();
-                }}
-              >
-                Community
-              </Link>
-              <IoMdArrowDropdown className="ml-2" />
-            </div>
-          </li>
-
-          <li className="p-4 hover:text-red-100 rounded cursor-pointer">
-            <Link
-              to="/support"
-              onClick={() => {
-                setIsOpen(false);
-                scrollToTop();
-              }}
-            >
-              Support
-            </Link>
-          </li>
-          <li className="p-4 hover:text-red-100 rounded cursor-pointer">
-            <Link
-              to="/aboutus"
-              onClick={() => {
-                setIsOpen(false);
-                scrollToTop();
-              }}
-            >
-              About us
-            </Link>
-          </li>
-          <li className="p-4 hover:text-red-100 rounded cursor-pointer">
-            <Link
-              to="/contact"
-              onClick={() => {
-                setIsOpen(false);
-                scrollToTop();
-              }}
-            >
-              Contact
-            </Link>
-          </li>
-          <li className="p-4 hover:text-red-100 py-0  rounded cursor-pointer">
-            <button>
+              </li>
+              <li className=" text-white hover:text-red-200 cursor-pointer">
+                <Link
+                  to="/aboutus"
+                  onClick={() => {
+                    scrollToTop();
+                    setIsMobileMenuOpen(false);
+                    setIsDropdownOpen(false);
+                    setHover(false);
+                  }}
+                >
+                  about us
+                </Link>
+              </li>
+              <li className=" text-white hover:text-red-200  cursor-pointer">
+                <Link
+                  to="/contact"
+                  onClick={() => {
+                    scrollToTop();
+                    setIsMobileMenuOpen(false);
+                    setIsDropdownOpen(false);
+                    setHover(false);
+                  }}
+                >
+                  contact
+                </Link>
+              </li>
               <Link
                 to="/"
                 onClick={() => {
-                  setIsOpen(false);
                   scrollToTop();
+                  setIsMobileMenuOpen(false);
+                  setIsDropdownOpen(false);
+                  setHover(false);
                 }}
-                className="bg-blue-400"
               >
-                logout
+                <li className=" text-white hover:text-red-200  cursor-pointer">
+                  login
+                </li>
               </Link>
-            </button>
-          </li>
-        </ul>
-      </div>
+            </ul>
+          </div>
+        )}
+        {searchClicked ? (
+          <input
+            type="text"
+            placeholder="search...."
+            className="absolute left-35 sm:block w-[60%] h-8 rounded-full bg-white text-black placeholder-gray-500 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        ) : (
+          <PiMagnifyingGlassBold
+            onClick={() => setSearchClicked(!searchClicked)}
+            className="text-white hover:text-red-200 absolute top-center left-60 sm:left-305 sm:top-center cursor-pointer"
+          />
+        )}
 
-      {/* Desktop Dropdown */}
-      {isHovered && (
-        <div
-          className="hidden sm:block fixed bg-[rgba(0,0,0,0.8)] shadow-lg z-50 overflow-hidden"
-          style={{
-            top: "4rem",
-            height: "50vh",
-            width: "100vw",
-          }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div className="flex justify-center items-center h-full w-full">
-            <div className="w-full max-w-screen-xl px-4">
-              {hoverIndex === 1 && <LearnDropDown />}
-              {hoverIndex === 2 && <ToolDropDown />}
-              {hoverIndex === 3 && <CommunityDropDown />}
+        {hover && (
+          <div
+            className="hidden sm:block fixed top-10 h-80 w-full shadow-lg z-50 overflow-hidden"
+            onMouseEnter={() => {
+              setHover(true);
+              setIsDropdownOpen(true);
+            }}
+            onMouseLeave={() => {
+              setHover(false);
+              setIsDropdownOpen(false);
+            }}
+          >
+            <div
+              className={`flex justify-center items-center h-full w-full transition-opacity duration-300 ease-in-out ${
+                isDropdownOpen ? "opacity-100 delay-300" : "opacity-0 delay-0"
+              }`}
+            >
+              <div className="w-full max-w-screen-xl px-4">
+                {hoverIndex === 1 && (
+                  <LearnDropDown
+                    setHover={setHover}
+                    setIsDropdownOpen={setIsDropdownOpen}
+                  />
+                )}
+                {hoverIndex === 2 && (
+                  <ToolDropDown
+                    setHover={setHover}
+                    setIsDropdownOpen={setIsDropdownOpen}
+                  />
+                )}
+                {hoverIndex === 3 && (
+                  <CommunityDropDown
+                    setHover={setHover}
+                    setIsDropdownOpen={setIsDropdownOpen}
+                  />
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      )}
-
-      {searchClicked && (
-        <div className="w-100  absolute mx-h-[80vh] bg-black top-13 flex flex-col">
-          <div className="flex flex-col absolute top-3 left-50">
-            {LearnDropDownItem.filter((item) =>
-              search.toLowerCase() === ""
-                ? item
-                : item.topic.toLowerCase().includes(search.toLowerCase())
-            ).map((item) => (
-              <Link
-                onClick={() => setSearchClicked(!searchClicked)}
-                to={`/Learn/${item.topic}`}
-                key={item.topic}
-                className="text-white  bg-[rgba(0,0,0,0.8)] p-2 cursor-pointer hover:text-red-100 "
-              >
-                {item.topic}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }
 
