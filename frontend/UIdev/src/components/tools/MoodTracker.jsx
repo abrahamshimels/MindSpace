@@ -14,7 +14,7 @@ const moodOptions = [
   { value: 'awful', label: 'Awful', icon: <Frown className="h-8 w-8 text-red-500" />, color: 'bg-red-100 hover:bg-red-200' },
 ];
 
-const MoodTracker = () => {
+const MoodTracker = ({className}) => {
   const [date, setDate] = useState(new Date());
   const [selectedMood, setSelectedMood] = useState(null);
   const [notes, setNotes] = useState('');
@@ -60,7 +60,7 @@ const MoodTracker = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className={`grid grid-cols-1 md:grid-cols-3 gap-6${className}`}>
       {/* Mood Tracking Card */}
       <Card className="md:col-span-2 shadow-lg shadow-gray-500 border border-gray-300 p-4">
         <CardHeader>
@@ -101,9 +101,7 @@ const MoodTracker = () => {
               <Button type="submit" variant="default">Save Entry</Button>
             </div>
           </form>
-          <div className="flex justify-start">
-              <Button type="submit" variant="default">See Last Entry</Button>
-          </div>
+         
 
         </CardContent>
       </Card>
@@ -123,36 +121,6 @@ const MoodTracker = () => {
           />
         </CardContent>
       </Card>
-      
-      {/* Recent Entries Card with adjusted width */}
-      {entries.length > 0 && (
-        <Card className="md:col-span-2">
-          <CardHeader>
-            <CardTitle>Recent Entries</CardTitle>
-            <CardDescription>Your mood history</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {entries.slice().reverse().map((entry, index) => {
-                const moodOption = moodOptions.find(option => option.value === entry.mood);
-                
-                return (
-                  <div key={index} className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-                    <div className="flex-shrink-0">
-                      {moodOption?.icon}
-                    </div>
-                    <div className="flex-grow">
-                      <div className="font-medium">{formatDate(entry.date)}</div>
-                      <div className="text-sm text-gray-500">Feeling: {moodOption?.label}</div>
-                      {entry.notes && <div className="mt-1 text-sm">{entry.notes}</div>}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </CardContent>
-        </Card>
-      )}
     </div>
   );
 };

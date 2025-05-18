@@ -31,7 +31,7 @@ function Navbar() {
       ></div>
 
       <div className=" fixed z-30  top-0 left-0 w-full flex items-center justify-between h-15">
-        <Link to="/home" onClick={scrollToTop}>
+        <Link to="/" onClick={scrollToTop}>
           <h1 className="text-white ml-10">MindSpace</h1>
         </Link>
         {searchClicked ? (
@@ -76,7 +76,7 @@ function Navbar() {
               <li className=" text-white hover:text-red-200 cursor-pointer">
                 {" "}
                 <Link
-                  to="/home"
+                  to="/"
                   onClick={() => {
                     scrollToTop();
                     setIsMobileMenuOpen(false);
@@ -212,7 +212,7 @@ function Navbar() {
                 </Link>
               </li>
               <Link
-                to="/"
+                to="/Register"
                 onClick={() => {
                   scrollToTop();
                   setIsMobileMenuOpen(false);
@@ -220,8 +220,8 @@ function Navbar() {
                   setHover(false);
                 }}
               >
-                <li className=" text-white hover:text-red-200  cursor-pointer">
-                  login
+                <li className=" text-white hover:text-red-200 bg-blue-500 rounded  cursor-pointer">
+                  Register/Login
                 </li>
               </Link>
             </ul>

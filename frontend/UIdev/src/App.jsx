@@ -15,8 +15,12 @@ import ForumDetail from "./pages/ForumDetail"
 import Appointement from "./components/Appointment/Appointement";
 import MoodHistory from "./components/MoodTracker/MoodHistory";
 import Navbar from "./components/Navbar";
-import LoginForm from "./components/LoginForm/LoginForm";
+import Register from "./components/RegisterForm/Register";
 import NewForum from "./components/CreartForum.jsx/NewForum";
+import UserSection from "./components/UserDashboard/UserSection";
+import AdminSection from "./components/Admin/AdminSection";
+import LoginForm from "./components/Login/LoginForm";
+import CounselorSection from "./components/Counselor/CounselorSection";
 
 
 
@@ -27,7 +31,7 @@ function App() {
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/learn" element={<Learn />}/>
           <Route path="/tool" element={<Tool />}/>
           <Route path="/community" element={<Community />}/>
@@ -38,8 +42,12 @@ function App() {
           <Route path="/community/:id" element={<ForumDetail/>}/>
           <Route path="/support/appointment/:id" element={<Appointement/>}/>
           <Route path="/Tool/moodHistory/:id" element={<MoodHistory/>}/>
-          <Route path="/" element={<LoginForm/>}/>
+          <Route path="/Register" element={<Register/>}/>
           <Route path="/newforum" element={<NewForum/>}/>
+          <Route path="/userdashboard" element={<UserSection />} />
+          <Route path="/adminsection" element={<AdminSection />} />
+          <Route path="/loginform" element={<LoginForm />} />
+           <Route path="/counselorsection" element={<CounselorSection />} />
 
         </Routes>
         <Footer />
