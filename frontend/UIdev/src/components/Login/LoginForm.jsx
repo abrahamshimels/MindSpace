@@ -51,7 +51,7 @@ const LoginForm = () => {
           if (userData.role === 'admin') {
             navigate('/adminsection');
           } else if (userData.role === 'counselor') {
-            navigate('/counselordashboard');
+            navigate('/counselorsection');
           } else if (userData.role === 'youth') {
             navigate('/userdashboard');
           } else {
@@ -105,7 +105,7 @@ const LoginForm = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className={`w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 ${
+            className={`w-full bg-indigo-600 cursor-pointer text-white py-2 rounded hover:bg-indigo-700 ${
               isLoading ? 'opacity-70 cursor-not-allowed' : ''
             }`}
           >

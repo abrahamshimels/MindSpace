@@ -160,7 +160,7 @@ const RegisterForm = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className={`w-full mt-4 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none ${
+            className={`w-full mt-4 py-2 cursor-pointer rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none ${
               isLoading ? "opacity-70 cursor-not-allowed" : ""
             }`}
           >
@@ -173,7 +173,7 @@ const RegisterForm = () => {
             Already have an account?{" "}
             <Link
               to="/loginForm"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-medium cursor-pointer text-indigo-600 hover:text-indigo-500"
             >
               Log in
             </Link>

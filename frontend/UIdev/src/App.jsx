@@ -21,6 +21,7 @@ import UserSection from "./components/UserDashboard/UserSection";
 import AdminSection from "./components/Admin/AdminSection";
 import LoginForm from "./components/Login/LoginForm";
 import CounselorSection from "./components/Counselor/CounselorSection";
+import Forum from "./components/UserDashboard/Forum";
 
 
 
@@ -48,6 +49,8 @@ function App() {
           <Route path="/adminsection" element={<AdminSection />} />
           <Route path="/loginform" element={<LoginForm />} />
            <Route path="/counselorsection" element={<CounselorSection />} />
+           <Route path="/forum" element={<Forum />} />
+
 
         </Routes>
         <Footer />

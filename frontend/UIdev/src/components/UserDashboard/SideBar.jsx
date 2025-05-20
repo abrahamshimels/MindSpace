@@ -7,13 +7,14 @@ function SideBar({
   setDownload,
   setOnExercise,
   setMoodHistory,
+  setForum,
 }) {
   const [defaultButton, setDefaultButton] = useState(true);
   return (
     <div>
-      <div className="sm:w-[45%]">
+      <div className="sm:w-[45%] sticky">
         <div className="flex flex-row w-[80%] mt-5 mx-auto">
-          <img src="" alt="" className="w-25 h-25 rounded-full border mr-5" />
+          <img src={null} alt="" className="w-25 h-25 rounded-full border mr-5" />
           <div className="mt-5">
             <p>name</p>
             <p>role</p>
@@ -38,6 +39,7 @@ function SideBar({
                   setDownload(false);
                   setOnExercise(false);
                   setMoodHistory(false);
+                  setForum(false);
                 }}
                 className="shadow-md cursor-pointer  rounded py-5 my-3 px-7"
               >
@@ -51,6 +53,7 @@ function SideBar({
                   setDownload(false);
                   setOnExercise(false);
                   setMoodHistory(false);
+                   setForum(false);
                 }}
                 className="shadow-md cursor-pointer  rounded py-5 my-3 px-7"
               >
@@ -64,6 +67,7 @@ function SideBar({
                   setDownload(false);
                   setOnExercise(false);
                   setMoodHistory(true);
+                   setForum(false);
                 }}
                 className="shadow-md cursor-pointer rounded py-5  px-9 my-3"
               >
@@ -77,6 +81,7 @@ function SideBar({
                   setDownload(false);
                   setOnExercise(true);
                   setMoodHistory(false);
+                   setForum(false);
                 }}
                 className="shadow-md cursor-pointer rounded py-5  px-9 my-3"
               >
@@ -95,8 +100,8 @@ function SideBar({
         )}
 
          {!defaultButton && (
-          <div className="shadow-md  rounded py-5 my-3 relative flex flex-wrap">
-            <div className="w-[70%]  mx-auto flex flex-row">
+          <div className=" shadow-md  rounded py-5 my-3 relative flex flex-wrap justify-around">
+            <div className="w-[70%]">
              
               <button
                 onClick={() => {
@@ -105,14 +110,29 @@ function SideBar({
                   setDownload(true);
                   setOnExercise(false);
                   setMoodHistory(false);
+                   setForum(false);
                 }}
-                className="shadow-md cursor-pointer rounded py-5 ml-10  px-9 my-3"
+                className="shadow-md cursor-pointer ml-6 rounded py-5  px-9 my-3"
               >
                 download
               </button>
+                  
+              <button
+                onClick={() => {
+                  setOnDashBoard(false);
+                  setOnMood(false);
+                  setDownload(false);
+                  setOnExercise(false);
+                  setMoodHistory(false);
+                   setForum(true);
+                }}
+                className="shadow-md cursor-pointer rounded ml-6 py-5  px-9 my-3"
+              >
+                Create <br />Forum
+              </button>
                {!defaultButton && (
                 <FaAngleLeft
-                  className="absolute left-0 shadow-md mx-auto h-8 w-8 top-1/2 cursor-pointer"
+                  className="absolute left-5 shadow-md mx-auto h-8 w-8 top-1/2 cursor-pointe"
                   onClick={() => setDefaultButton(true)}
                 />
               )}

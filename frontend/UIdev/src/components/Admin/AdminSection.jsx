@@ -13,7 +13,7 @@ function AdminSection() {
   const [articleClicked, setArticleClicked] = useState(false);
 
   return (
-    <div className="m-15 sm:relative">
+    <div className="m-15 mb-40 sm:relative">
       <SideBar
         setAddArticle={setAddArticle}
         setUpdateArticles={setUpdateArticles}

@@ -28,4 +28,6 @@ class WellnessEntry(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.mood} on {self.timestamp.date()}"
+        # Change self.user.username to self.user.email
+        # Or simply self.user if your CustomUser model has a proper __str__ method
+        return f"{self.user.email} - {self.mood} on {self.timestamp.date()}"

@@ -93,7 +93,7 @@ function AddArticles() {
     <div>
       <form
         onSubmit={handleSubmit}
-        className=" sm:absolute shadow-sm mt-5 sm:top-5 sm:right-0 sm:w-[55%] sm:h-[90vh] mx-auto"
+        className=" sm:absolute shadow-sm mt-5 sm:top-5 sm:right-0 sm:w-[55%] mx-auto"
       >
         <h1 className="text-center mb-5">Add Article</h1>
         <h2 className="text-center mb-5">Welcome Admin!</h2>

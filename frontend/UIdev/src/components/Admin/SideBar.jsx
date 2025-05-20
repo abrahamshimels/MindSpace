@@ -9,27 +9,33 @@ function SideBar({
   setArticleClicked,
 }) {
 
-  const handleDelete = () => {
-    const articleId = localStorage.getItem("articleId");
-    if (!articleId) {
-      alert("No article selected for deletion.");
-      return;
-    }
+const handleDelete = () => {
+  const articleId = localStorage.getItem("articleId");
+  const token = localStorage.getItem("accessToken");
 
-    fetch(`http://127.0.0.1:8000/api/articles/${articleId}/`, {
-      method: 'DELETE',
+  if (!articleId) {
+    alert("No article selected for deletion.");
+    return;
+  }
+
+  fetch(`http://127.0.0.1:8000/api/articles/${articleId}/`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((res) => {
+      if (res.ok) {
+        alert("Article deleted successfully");
+        localStorage.removeItem("articleId");
+        setArticleClicked(false);
+      } else {
+        throw new Error("Failed to delete article");
+      }
     })
-      .then((res) => {
-        if (res.ok) {
-          alert("Article deleted successfully");
-          localStorage.removeItem("articleId");
-          setArticleClicked(false);
-        } else {
-          throw new Error("Failed to delete article");
-        }
-      })
-      .catch((error) => console.error("Delete error:", error));
-  };
+    .catch((error) => console.error("Delete error:", error));
+};
 
   return (
     <div>
